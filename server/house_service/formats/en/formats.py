@@ -1,0 +1,1 @@
+TIME_FORMAT = 'g:i A'

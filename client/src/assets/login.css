@@ -1,0 +1,50 @@
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+.login-form .card-a {
+  height: 400px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  /* color: #0e0ed1; */
+}
+.login-form .card-admin {
+  /* height: 400px; */
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  /* color: #0e0ed1; */
+}
+.login_form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.card-footer-login {
+  text-align: center;
+  font-size: 14px;
+}
+.login-form .card-a .input-field {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+.login-form .card-admin .input-field {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+.login-form .input-group {
+  border: 1px solid rgb(182, 178, 178);
+  height: 32px;
+}
+.login-form input::placeholder {
+  color: rgb(196, 194, 194);
+  opacity: 0.8;
+}
+.callback {
+  background: #dde6ed;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
