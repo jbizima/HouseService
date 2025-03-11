@@ -109,7 +109,7 @@ export default function UserForm({
               icon="fa fa-user"
               placeholder={"Username"}
               handleChange={handleChange}
-              value={form.userName}
+              value={form.username}
             />
           </div>
 

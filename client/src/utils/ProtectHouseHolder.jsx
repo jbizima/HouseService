@@ -8,7 +8,7 @@ function ProtectHouseHolder() {
     if (!isAuthenticated.status || userData.is_superuser || userData.is_staff == 1) {
       return <Navigate to="/" replace />;
     }
-    return <Outlet />;
+    return <Outlet context={userData}/>;
   }
 }
 

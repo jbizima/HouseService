@@ -2,14 +2,16 @@ import React from "react";
 import Sidebar from "../../components/owner/Sidebar";
 import { Outlet, useNavigate } from "react-router-dom";
 import { createContext, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import { useProtectPage } from "../../hooks/useProtectPage";
 import useFetchPagination from "@/hooks/useFetchPagination";
 
 export const pendingBookingContext = createContext();
 
 function DashboardOwner() {
+  const userData = useOutletContext();
   const navigate = useNavigate();
-  const { userData } = useProtectPage();
+  // const { userData } = useProtectPage();
   const [search, setSearch] = useState(null);
   const [page, setPage] = useState(1);
   const [reload, setReload] = useState(false);
@@ -39,6 +41,7 @@ function DashboardOwner() {
     <div className="dashboard">
       <pendingBookingContext.Provider
         value={{
+          userData,
           data,
           links,
           isLoading,

@@ -8,7 +8,7 @@ function ProtectOwner() {
     if (!isAuthenticated.status || userData.is_superuser || userData.is_staff == 0) {
       return <Navigate to="/" replace />;
     }
-    return <Outlet />;
+    return <Outlet context={userData} />;
   }
 }
 

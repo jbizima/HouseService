@@ -10,21 +10,22 @@ export default function useUpdateUser(user) {
   const [isLoading, setIsLoading] = useState(false);
 
   const [form, setForm] = useState(
-    user
-      ? {
+    // user
+    //   ? 
+      {
           firstName: user.first_name,
           lastName: user.last_name,
           username: user.username,
           password: "",
           confirmPassword: "",
         }
-      : {
-          firstName: "",
-          lastName: "",
-          username: "",
-          password: "",
-          confirmPassword: "",
-        }
+      // : {
+      //     firstName: "",
+      //     lastName: "",
+      //     username: "",
+      //     password: "",
+      //     confirmPassword: "",
+      //   }
   );
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -60,6 +60,7 @@ import PrintAllReportsO from "./pages/owner/PrintAllReports";
 import PrintFilterReportsO from "./pages/owner/PrintFilterReport";
 import FinanceReports from "./pages/FinanceReports";
 import PrintFinanceReports from "./pages/PrintFinanceReports";
+import UpdateUserO from "./pages/owner/updateUser";
 
 const router = createBrowserRouter([
   {
@@ -200,6 +201,10 @@ const router = createBrowserRouter([
           {
             element: <FilterReportsO />,
             path: "/owner/filter-reports",
+          },
+          {
+            element: <UpdateUserO />,
+            path: "/owner/update-user",
           },
         ],
       },

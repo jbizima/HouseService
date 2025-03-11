@@ -1,11 +1,13 @@
-import React from "react";
+import React,{useContext} from "react";
 import ContentHeader from "../components/ContentHeader";
 import useUpdateUser from "@/hooks/useUpdateUser";
 import UserForm from "@/components/UserForm";
 import { useProtectPage } from "@/hooks/useProtectPage";
+import { pendingBookingContext } from "@/pages/Dashboard";
 
 function UpdateUser() {
-  const { userData } = useProtectPage();
+  const {userData} = useContext(pendingBookingContext);
+  // const { userData } = useProtectPage();
   const {
     message,
     isLoading,
@@ -14,14 +16,14 @@ function UpdateUser() {
     validateSubmitForm,
     clearMessage,
     fieldError,
-  } = useUpdateUser(userData && userData);
+  } = useUpdateUser(userData);
 
   return (
     <div className="dashboard--content category">
       <ContentHeader />
       <div className="hr"></div>
       <div className="header--content">
-        <span>Update user Service</span>
+        <span>Update user Info</span>
       </div>
       <UserForm
         message={message}

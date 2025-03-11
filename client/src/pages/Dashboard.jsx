@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useOutletContext } from "react-router-dom";
 import { createContext, useState } from "react";
 import { useProtectPage } from "../hooks/useProtectPage";
 import useFetchPagination from "@/hooks/useFetchPagination";
@@ -8,6 +8,7 @@ import useFetchPagination from "@/hooks/useFetchPagination";
 export const pendingBookingContext = createContext();
 
 function Dashboard() {
+  const userData = useOutletContext();
   const navigate = useNavigate();
   const [search, setSearch] = useState(null);
   const [page, setPage] = useState(1);
@@ -34,6 +35,7 @@ function Dashboard() {
     <div className="dashboard">
       <pendingBookingContext.Provider
         value={{
+          userData,
           data,
           links,
           isLoading,
