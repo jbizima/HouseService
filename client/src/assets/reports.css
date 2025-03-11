@@ -1,17 +1,29 @@
-.reports .view-category-header{
+.reports .view-category-header {
   align-items: baseline;
 }
-.reports .view-category-header.filter{
+.reports .view-category-header.filter {
   display: flex;
-  align-items:end;
+  align-items: end;
 }
-.fa.report-icon{
-    height: 35px;
-    background-color: rgb(34, 122, 34);
-    color: white;
+.fa.report-icon {
+  height: 35px;
+  background-color: rgb(34, 122, 34);
+  color: white;
 }
 .user-form-row {
   display: flex;
   gap: 10px;
   justify-content: space-between;
+}
+.click {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.click:hover {
+  cursor: pointer;
+  color: rgb(88, 207, 88);
+}
+.click:active {
+  color: white;
 }

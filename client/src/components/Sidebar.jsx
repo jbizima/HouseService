@@ -227,6 +227,17 @@ function Sidebar() {
               <i className="fa-solid fa-chart-line icon"></i>
               Finance
             </NavLink>
+            <NavLink
+              to="/dashboard/worker-reports"
+              className={
+                openReports
+                  ? "item-sub open animated slideInDown"
+                  : "animated slideInUp item-sub"
+              }
+            >
+              <i className="fa-solid fa-users icon"></i>
+              Business owners
+            </NavLink>
           </div>
         </div>
         <div className={openSettings ? "sidebar-item open" : "sidebar-item"}>
