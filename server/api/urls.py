@@ -82,6 +82,7 @@ urlpatterns = [
         name="delete_booking",
     ),
     path("bookings/", BookingList.as_view(), name="view_bookings"),
+    path("bookings/worker/", BookingListOwner.as_view(), name="view_bookings_worker"),
     path("booking/", BookingStatusList.as_view(), name="view_bookings_status"),
     path("booking/worker/", BookingWorkerStatusList.as_view(), name="view_bookings_worker_status"),
     path("bookings/worker/", BookingWorkerStatus.as_view(), name="bookings_worker_status"),

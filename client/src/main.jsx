@@ -62,6 +62,7 @@ import FinanceReports from "./pages/FinanceReports";
 import PrintFinanceReports from "./pages/PrintFinanceReports";
 import UpdateUserO from "./pages/owner/updateUser";
 import WorkerReports from "./pages/WorkerReports";
+import WorkerReport from "./pages/WorkerReport";
 
 const router = createBrowserRouter([
   {
@@ -156,6 +157,10 @@ const router = createBrowserRouter([
           {
             element: <WorkerReports />,
             path: "/dashboard/worker-reports",
+          },
+          {
+            element: <WorkerReport />,
+            path: "/dashboard/business-owner",
           },
           {
             element: <UpdateUser />,

@@ -285,21 +285,20 @@ class WorkerList(generics.ListAPIView):
     permission_classes = [AllowAny]
     filter_backends = [filters.SearchFilter]
     search_fields = ["name"]
-    
-    
+
+
 class WorkerReportList(generics.ListAPIView):
     queryset = Worker.objects.all()
     serializer_class = WorkerReportSerializer
     permission_classes = [AllowAny]
     # pagination_class = None
-    
-    
+
+
 class WorkerReportListPrint(generics.ListAPIView):
     queryset = Worker.objects.all()
     serializer_class = WorkerReportSerializer
     permission_classes = [AllowAny]
     pagination_class = None
-    
 
 
 class WorkerNoPagination(generics.ListAPIView):
@@ -368,18 +367,20 @@ class CreateBookingAPIView(generics.CreateAPIView):
                     status=status.HTTP_400_BAD_REQUEST,
                 )
             else:
-                Booking.objects.create(date_booking = date, client=client, worker=worker, service=service, time=time )
+                Booking.objects.create(
+                    date_booking=date, client=client, worker=worker, service=service, time=time)
                 return JsonResponse(
-            {"success": "Successfully Inserted"},
-            status=status.HTTP_201_CREATED,
-        )
+                    {"success": "Successfully Inserted"},
+                    status=status.HTTP_201_CREATED,
+                )
 
         except Booking.DoesNotExist:
-            Booking.objects.create(date_booking = date, client=client, worker=worker, service=service, time=time )
+            Booking.objects.create(
+                date_booking=date, client=client, worker=worker, service=service, time=time)
             return JsonResponse(
-            {"success": "Successfully Inserted"},
-            status=status.HTTP_201_CREATED,
-        )
+                {"success": "Successfully Inserted"},
+                status=status.HTTP_201_CREATED,
+            )
 
 
 class UpdateUser(generics.RetrieveUpdateAPIView):
@@ -387,7 +388,6 @@ class UpdateUser(generics.RetrieveUpdateAPIView):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
     lookup_url_kwarg = "user_id"
-
 
 
 class ChangePasswordView(generics.UpdateAPIView):
@@ -403,6 +403,23 @@ class BookingList(generics.ListAPIView):
     permission_classes = [AllowAny]
     filter_backends = [filters.SearchFilter]
     search_fields = ["service__name", "worker__name"]
+
+
+class BookingListOwner(generics.ListAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        owner_id = self.request.query_params.get("worker_id")
+        from_date = self.request.query_params.get("from_date")
+        to_date = self.request.query_params.get("to_date")
+        if owner_id is not None and from_date is not None:
+            worker = Worker.objects.get(pk=owner_id)
+            self.queryset = self.queryset.filter(
+                worker=worker, date_booking__range=(from_date, to_date))
+
+        return self.queryset
 
 
 class BookingStatusList(generics.ListAPIView):
@@ -473,7 +490,7 @@ class BookingClientList(generics.ListAPIView):
 
     def get_queryset(self):
 
-        client = self.request.query_params.get("client") 
+        client = self.request.query_params.get("client")
         user = User.objects.get(pk=client)
         update = self.request.query_params.get("update")
         if update == None:
@@ -566,7 +583,8 @@ class BookingRangeDatePrintWorker(generics.ListAPIView):
 
         from_date = self.request.query_params.get("from_date")
         to_date = self.request.query_params.get("to_date")
-        worker = Worker.objects.get(pk=self.request.query_params.get("worker_id"))
+        worker = Worker.objects.get(
+            pk=self.request.query_params.get("worker_id"))
         if from_date is not None:
             self.queryset = self.queryset.filter(
                 date_booking__range=(from_date, to_date), worker=worker

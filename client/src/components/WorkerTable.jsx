@@ -60,7 +60,7 @@ export default function WorkerTable({
                   {page == "reports" ? (
                     <i
                       className="fa fa-eye text-primary click"
-                      onClick={() => navigate(`/dashboard/business-owner/?owner_id=${worker.id}`)}
+                      onClick={() => navigate(`/dashboard/business-owner/?owner_id=${worker.id}&owner_name=${worker.name}`)}
                     ></i>
                   ) : (
                     <div className="action-btns">
