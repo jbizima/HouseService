@@ -171,20 +171,21 @@ const router = createBrowserRouter([
             element: <UpdateUser />,
             path: "/dashboard/update-user",
           },
+          {
+            element: <PrintAllReports />,
+            path: "/dashboard/print-allReport/",
+          },
+          {
+            element: <PrintFilterReports />,
+            path: "/dashboard/print-filterReport/",
+          },
+          {
+            element: <PrintFinanceReports />,
+            path: "/dashboard/print-financeReport/",
+          },
         ],
       },
-      {
-        element: <PrintAllReports />,
-        path: "/dashboard/print-allReport/",
-      },
-      {
-        element: <PrintFilterReports />,
-        path: "/dashboard/print-filterReport/",
-      },
-      {
-        element: <PrintFinanceReports />,
-        path: "/dashboard/print-financeReport/",
-      },
+      
     ],
   },
   {
@@ -221,16 +222,17 @@ const router = createBrowserRouter([
             element: <UpdateUserO />,
             path: "/owner/update-user",
           },
+          {
+            element: <PrintAllReportsO />,
+            path: "/owner/print-allReport/",
+          },
+          {
+            element: <PrintFilterReportsO />,
+            path: "/owner/print-filterReport/",
+          },
         ],
       },
-      {
-        element: <PrintAllReportsO />,
-        path: "/owner/print-allReport/",
-      },
-      {
-        element: <PrintFilterReportsO />,
-        path: "/owner/print-filterReport/",
-      },
+      
     ],
   },
   {
