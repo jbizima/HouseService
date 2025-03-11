@@ -99,7 +99,7 @@ function WorkerReport() {
           className="btn-icon fa fa-print report-icon"
           onClick={() =>
             navigate(
-              `/dashboard/print-allReport/?fromDate=${dates.fromDate}&toDate=${dates.toDate}`
+              `/dashboard/print-allWorkerReport/?owner_id=${workerId}&owner_name=${workerName}&fromDate=${dates.fromDate}&toDate=${dates.toDate}`
             )
           }
         ></i>

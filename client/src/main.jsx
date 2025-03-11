@@ -63,6 +63,7 @@ import PrintFinanceReports from "./pages/PrintFinanceReports";
 import UpdateUserO from "./pages/owner/updateUser";
 import WorkerReports from "./pages/WorkerReports";
 import WorkerReport from "./pages/WorkerReport";
+import PrintWorkerReports from "./pages/PrintWorkerReports";
 
 const router = createBrowserRouter([
   {
@@ -161,6 +162,10 @@ const router = createBrowserRouter([
           {
             element: <WorkerReport />,
             path: "/dashboard/business-owner",
+          },
+          {
+            element: <PrintWorkerReports />,
+            path: "/dashboard/print-allWorkerReport",
           },
           {
             element: <UpdateUser />,

@@ -422,6 +422,24 @@ class BookingListOwner(generics.ListAPIView):
         return self.queryset
 
 
+class BookingPrintOwner(generics.ListAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+    permission_classes = [AllowAny]
+    pagination_class = None
+
+    def get_queryset(self):
+        owner_id = self.request.query_params.get("worker_id")
+        from_date = self.request.query_params.get("from_date")
+        to_date = self.request.query_params.get("to_date")
+        if owner_id is not None and from_date is not None:
+            worker = Worker.objects.get(pk=owner_id)
+            self.queryset = self.queryset.filter(
+                worker=worker, date_booking__range=(from_date, to_date))
+
+        return self.queryset
+
+
 class BookingStatusList(generics.ListAPIView):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
