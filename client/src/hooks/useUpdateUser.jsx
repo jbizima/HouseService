@@ -11,21 +11,21 @@ export default function useUpdateUser(user) {
 
   const [form, setForm] = useState(
     // user
-    //   ? 
-      {
-          firstName: user.first_name,
-          lastName: user.last_name,
-          username: user.username,
-          password: "",
-          confirmPassword: "",
-        }
-      // : {
-      //     firstName: "",
-      //     lastName: "",
-      //     username: "",
-      //     password: "",
-      //     confirmPassword: "",
-      //   }
+    //   ?
+    {
+      firstName: user.first_name,
+      lastName: user.last_name,
+      username: user.username,
+      password: "",
+      confirmPassword: "",
+    }
+    // : {
+    //     firstName: "",
+    //     lastName: "",
+    //     username: "",
+    //     password: "",
+    //     confirmPassword: "",
+    //   }
   );
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,6 +49,9 @@ export default function useUpdateUser(user) {
       //   form.firstName = form.firstName ? form.firstName : user.first_name;
       //   form.lastName = form.lastName ? form.lastName : user.last_name;
       //   form.username = form.username ? form.username : user.username;
+      if (form.password != "") {
+        submitFormPassword();
+      }
       submitForm();
     }
   };
@@ -63,7 +66,57 @@ export default function useUpdateUser(user) {
         first_name: form.firstName,
         last_name: form.lastName,
         username: form.username,
-        
+      })
+      .then((res) => {
+        setMessage({
+          success: true,
+          message: "User updated successfuly",
+        });
+      })
+      .catch((err) => {
+        if (err.message !== "canceled") {
+          setMessage({
+            success: false,
+            message: err.message,
+          });
+        }
+        if (err.status == 401) {
+          setMessage({
+            success: false,
+            message: "You need to login first!, Token Expired!",
+          });
+          setTimeout(() => {
+            navigate("/login");
+          }, 6000);
+        } else if (err.status == 400) {
+          setMessage({
+            success: false,
+            message: err.response.data,
+          });
+        } else if (err.code == "ERR_NETWORK") {
+          setMessage({
+            success: false,
+            message: "Please check your internet connection",
+          });
+        } else {
+          setMessage({
+            success: false,
+            message: err.message,
+          });
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+  const submitFormPassword = (e) => {
+    setIsLoading(true);
+    axios.defaults.headers.common["Authorization"] = `Bearer ${
+      axiosHeader.jwt ? axiosHeader.jwt : axiosHeader.google
+    }`;
+    axios
+      .patch(axiosHeader.url + `/api/user/update_password/${user.id}`, {
+        password: form.password,
       })
       .then((res) => {
         setMessage({

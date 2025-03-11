@@ -98,4 +98,5 @@ urlpatterns = [
         name="get_categories_bookings",
     ),
     path("user/update/<int:user_id>", UpdateUser.as_view(), name="update_user"),
+    path("user/update_password/<int:user_id>", ChangePasswordView.as_view(), name="update_user_password"),
 ]

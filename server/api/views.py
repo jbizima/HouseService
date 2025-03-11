@@ -389,6 +389,14 @@ class UpdateUser(generics.RetrieveUpdateAPIView):
     lookup_url_kwarg = "user_id"
 
 
+
+class ChangePasswordView(generics.UpdateAPIView):
+
+    queryset = User.objects.all()
+    serializer_class = ChangePasswordSerializer
+    lookup_url_kwarg = "user_id"
+
+
 class BookingList(generics.ListAPIView):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer

@@ -172,6 +172,26 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
         return user
+    
+    
+
+class ChangePasswordSerializer(serializers.ModelSerializer):
+    
+
+    class Meta:
+        model = User
+        fields = ('password',)
+        extra_kwargs = {
+            "password": {"write_only": True},
+        }
+
+    def update(self, instance, validated_data):
+
+        instance.set_password(validated_data['password'])
+        instance.save()
+
+        return instance    
+    
 
 
 class ServiceSerializer(serializers.ModelSerializer):
