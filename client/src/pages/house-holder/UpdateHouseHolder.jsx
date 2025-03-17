@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import { userContext } from "../../pages/house-holder/RootHouseHolder";
-import useUpdateUser from "../../hooks/useUpdateUser";
-import UserForm from "../../components/UserForm";
+import { userContext } from "@/pages/house-holder/RootHouseHolder";
+import useUpdateUser from "@/hooks/useUpdateUser";
+import UserForm from "@/components/UserForm";
 
 function UpdateHouseHolder() {
   const contextData = useContext(userContext);

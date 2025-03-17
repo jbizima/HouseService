@@ -44,7 +44,7 @@ import MyBookings from "./pages/house-holder/MyBookings";
 import AllReports from "./pages/AllReports";
 import FilterReports from "./pages/FilterReports";
 import UpdateUser from "./pages/UpdateUser";
-import UpdateHouseHolder from "./pages/house-holder/updateHouseHolder";
+import UpdateHouseHolder from "./pages/house-holder/UpdateHouseHolder";
 import PrintAllReports from "./pages/PrintAllReports";
 import PrintFilterReports from "./pages/PrintFilterReport";
 import LoginOwner from "./pages/LoginOwner";
