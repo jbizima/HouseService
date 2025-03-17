@@ -190,9 +190,9 @@ SOCIALACCOUNT_PROVIDERS = {
 # to store token when use social acc.
 SOCIALACCOUNT_STORE_TOKENS = True
 
-STORAGES = {
-    # ...
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+# STORAGES = {
+#     # ...
+#     "staticfiles": {
+#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#     },
+# }
