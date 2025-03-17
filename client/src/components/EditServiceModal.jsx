@@ -1,6 +1,6 @@
 import Button from "./ui/Button";
 import InputField from "./ui/InputField";
-import useEditService from "../hooks/useEditservice";
+import useEditService from "../hooks/useEditService";
 import useFetchAll from "../hooks/useFetchAll";
 
 export default function EditServiceModal({
