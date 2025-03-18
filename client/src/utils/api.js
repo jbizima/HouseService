@@ -1,11 +1,12 @@
 import axios from "axios";
 import { ACCESS_TOKEN } from "./token";
+import { axiosHeader } from "./axiosHeader";
 
 // connectiong backend with frontend
 
 const apiUrl = '/choreo-apis/awbo/backend/rest-api-be2/v1.0'
 const api = axios.create({
-    baseURL: import.meta.env.VITE_REACT_APP_API ? import.meta.env.VITE_REACT_APP_API : apiUrl,
+    baseURL: axiosHeader.url ? axiosHeader.url : apiUrl,
 })
 
 api.interceptors.request.use(
