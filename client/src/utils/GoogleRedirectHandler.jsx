@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { GOOGLE_ACCESS_TOKEN } from "./token";
+import { axiosHeader } from "./axiosHeader";
 
 function GoogleRedirectHandler() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function GoogleRedirectHandler() {
       // verify token from backend
       axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
       axios
-        .get("http://127.0.0.1:8000/api/auth/user/")
+        .get(axiosHeader.url+"/api/auth/user/")
         .then((response) => {
           navigate("/house-holder");
           window.location.reload();
