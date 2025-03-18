@@ -92,7 +92,7 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
   },
   {
-    path: "/logins/callback",
+    path: "/login/callback/",
     element: <GoogleRedirectHandler />,
     errorElement: <NotFoundPage />,
   },
