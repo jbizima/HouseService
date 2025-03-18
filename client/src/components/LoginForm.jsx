@@ -7,6 +7,7 @@ import loadingImg from "/images/n-loading.gif";
 import { useNavigate } from "react-router-dom";
 import FlashMessage from "./ui/FlashMessage";
 import googlePicture from "/images/google.png";
+import { axiosHeader } from "../utils/axiosHeader";
 
 // api
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../utils/token";
@@ -71,7 +72,7 @@ export default function LoginForm() {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = "http://127.0.0.1:8000/accounts/google/login/";
+    window.location.href = axiosHeader.url+"/accounts/google/login/";
   };
 
   return (
